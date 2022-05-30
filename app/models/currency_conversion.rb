@@ -1,7 +1,7 @@
 
 class CurrencyConversion < ApplicationRecord
 
-  AVAILABLE_CURRENCIES = %w(USD JPY COP)
+  AVAILABLE_CURRENCIES = %w(USD JPY COP EUR DKK GTQ CNY CLP XAF KYD CAD)
 
   validates_presence_of :from, :to, :actual_amount
   validate :distinctiveness_in_currency_types
