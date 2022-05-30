@@ -30,4 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    currency_conversions:
+      distinguish_currency_types: Currency To and From must be different
