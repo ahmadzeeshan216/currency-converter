@@ -5,11 +5,16 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^5.4.3",
     "turbolinks": "^5.2.0",
     "webpack": "^5.72.1"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
   }
 }
