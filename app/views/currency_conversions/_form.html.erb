@@ -1,15 +1,26 @@
 
-<%= form_for @currency_conversion do |f| %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<div class="border border-3 rounded-3 p-5 mt-5">
 
-  <%= f.number_field :actual_amount, required: true %>
-  <%= f.select :from, options_for_select(CurrencyConversion::AVAILABLE_CURRENCIES, selected: @currency_conversion.from, disabled: 'Select Currrency'),
-                      prompt: 'Select Currrency',
-                      required: true %>
-  <%= f.select :to, options_for_select(CurrencyConversion::AVAILABLE_CURRENCIES, selected: @currency_conversion.to),
-                    prompt: 'Select Currrency',
-                    required: true %>
-  <%= f.number_field :converted_amount, disbaled: true if edit_action? || update_action? %>
+  <h1> Real Currency Conversion </h1>
+  <%= form_for @currency_conversion do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-  <%= f.submit :convert %>
-<% end %>
+    <div class="input-group mt-5">
+      <span class="input-group-text">From</span>
+      <%= currency_dropdown(f, :from) %>
+      <span class="input-group-text">Amount</span>
+      <%= f.number_field :actual_amount, class: 'form-control', placeholder: '999.9', required: true %>
+    </div>
+
+    <div class="input-group mt-5">
+      <span class="input-group-text"> To </span>
+      <%= currency_dropdown(f, :to) %>
+      <% if edit_action? || update_action? %>
+        <span class="input-group-text">Converted Amount</span>
+        <%= f.number_field :converted_amount, class: 'form-control text-light bg-success', id: 'disabledInput' %>
+      <% end %>
+    </div>
+
+    <%= f.submit 'Convert', class: 'btn btn-primary mt-5' %>
+  <% end %>
+<div>

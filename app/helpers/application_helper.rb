@@ -18,4 +18,12 @@ module ApplicationHelper
     end
   end
 
+  def currency_dropdown(form, type)
+    form.select type, options_for_select(
+                        CurrencyConversion::AVAILABLE_CURRENCIES,
+                        selected: @currency_conversion.send(type)
+                      ),
+                      { prompt: 'Select Currrency' },
+                      { class: 'form-select', required: true }
+  end
 end
