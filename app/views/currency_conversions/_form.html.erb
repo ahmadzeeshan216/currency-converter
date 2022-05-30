@@ -1,0 +1,15 @@
+
+<%= form_for @currency_conversion do |f| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+  <%= f.number_field :actual_amount, required: true %>
+  <%= f.select :from, options_for_select(CurrencyConversion::AVAILABLE_CURRENCIES, selected: @currency_conversion.from, disabled: 'Select Currrency'),
+                      prompt: 'Select Currrency',
+                      required: true %>
+  <%= f.select :to, options_for_select(CurrencyConversion::AVAILABLE_CURRENCIES, selected: @currency_conversion.to),
+                    prompt: 'Select Currrency',
+                    required: true %>
+  <%= f.number_field :converted_amount, disbaled: true if edit_action? || update_action? %>
+
+  <%= f.submit :convert %>
+<% end %>
